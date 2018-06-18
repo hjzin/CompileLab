@@ -1,8 +1,0 @@
-//检测内容：括号不完整
-/* this is a test */
-begin
-if (a<b
-then a + 1;
-else
-    b/0;
-end

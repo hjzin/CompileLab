@@ -1,3 +1,0 @@
-/Users/hhzjj/Code/C:C++/Clion/Parser/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/hhzjj/Code/C:C++/Clion/Parser/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/hhzjj/Code/C:C++/Clion/Parser/cmake-build-debug/CMakeFiles/Parser.dir

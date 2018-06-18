@@ -1,8 +1,0 @@
-//检测内容：除数不能为0
-/* this is a test */
-begin
-if (a<b)
-then a + 1;
-else
-    b/0;
-end
