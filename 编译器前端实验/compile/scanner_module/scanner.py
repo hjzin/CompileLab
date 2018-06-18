@@ -58,6 +58,7 @@ def scanner(line):
     :return: 二元式数组scanner_output;错误类型error
     """
     global error
+    error = -1
     scanner_output = []
     line = line.replace('\n', '')
     line = line.replace(';', '')

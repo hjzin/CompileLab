@@ -401,57 +401,50 @@ def slr1(output):
             src.append(output[i].token)
     src.append('#')
     num = 0
-    with open('output.txt', 'w', encoding='utf-8') as output_file:
-        while True:
-            # 存储被规约掉的产生式的元素
-            sym = []
-            sta_top = status_stack.get_top()
-            if SLR1[sta_top][VT.index(src[current])] != -1 and 'S' in SLR1[sta_top][VT.index(src[current])]:
-                next_status = int(SLR1[sta_top][VT.index(src[current])][1:])
-                status_stack.push(next_status)
-                sym_stack.push(src[current])
-                current += 1
-            elif SLR1[sta_top][VT.index(src[current])] != -1 and 'R' in SLR1[sta_top][VT.index(src[current])]:
-                rulepos = int(SLR1[sta_top][VT.index(src[current])][1:])
-                count = 0
-                while count != len(rule_list[rulepos].right):
-                    sym.append(sym_stack.pop())
+    while True:
+        # 存储被规约掉的产生式的元素
+        sym = []
+        sta_top = status_stack.get_top()
+        if SLR1[sta_top][VT.index(src[current])] != -1 and 'S' in SLR1[sta_top][VT.index(src[current])]:
+            next_status = int(SLR1[sta_top][VT.index(src[current])][1:])
+            status_stack.push(next_status)
+            sym_stack.push(src[current])
+            current += 1
+        elif SLR1[sta_top][VT.index(src[current])] != -1 and 'R' in SLR1[sta_top][VT.index(src[current])]:
+            rulepos = int(SLR1[sta_top][VT.index(src[current])][1:])
+            count = 0
+            while count != len(rule_list[rulepos].right):
+                sym.append(sym_stack.pop())
+                status_stack.pop()
+                count += 1
+            sym_stack.push(rule_list[rulepos].left)
+            sym_top = sym_stack.get_top()
+            while True:
+                sta_top = status_stack.get_top()
+                if SLR1[sta_top][VN.index(sym_top) + len(VT) - 1] != -1:
+                    status_stack.push(SLR1[sta_top][VN.index(sym_top) + len(VT) - 1])
+                    break
+                else:
                     status_stack.pop()
-                    count += 1
-                sym_stack.push(rule_list[rulepos].left)
-                sym_top = sym_stack.get_top()
-                while True:
-                    sta_top = status_stack.get_top()
-                    if SLR1[sta_top][VN.index(sym_top) + len(VT) - 1] != -1:
-                        status_stack.push(SLR1[sta_top][VN.index(sym_top) + len(VT) - 1])
-                        break
-                    else:
-                        status_stack.pop()
-                if '+' in rule_list[rulepos].right or '-' in rule_list[rulepos].right or '*' in rule_list[
-                    rulepos].right or '/' in rule_list[rulepos].right:
-                    if len(quater_list) == 0:
-                        quater = Quater(rule_list[rulepos].right[1], 'i', 'i', 'T' + str(num))
-                        output_file.write(
-                            '(%s, %s, %s, %s)\n' % (quater.op, quater.arg1, quater.arg2, quater.result))
-                        quater_list.append(quater)
-                    else:
-                        quater = Quater(rule_list[rulepos].right[1], 'i', quater_list[-1].result,
-                                        'T' + str(num))
-                        quater_list.append(quater)
-                        output_file.write('(%s, %s, %s, %s)\n' % (quater_list[-1].op, quater_list[-1].arg1, quater_list[-1].arg2, quater_list[-1].result))
-                    num += 1
-                elif '=' in rule_list[rulepos].right:
-                    quater = Quater('=', quater_list[-1].result, '_', sym[2])
+            if '+' in rule_list[rulepos].right or '-' in rule_list[rulepos].right or '*' in rule_list[
+                rulepos].right or '/' in rule_list[rulepos].right:
+                if len(quater_list) == 0:
+                    quater = Quater(rule_list[rulepos].right[1], 'i', 'i', 'T' + str(num))
                     quater_list.append(quater)
-                    output_file.write(
-                        '(%s, %s, %s, i)\n' % (quater_list[-1].op, quater_list[-1].arg1, quater_list[-1].arg2))
-            elif SLR1[sta_top][VT.index(src[current])] == 'acc':
-                output_file.write('合法字符串\n')
-                break
-            else:
-                output_file.write('\n')
-                output_file.write('为不合法字符串')
-                break
+                else:
+                    quater = Quater(rule_list[rulepos].right[1], 'i', quater_list[-1].result,
+                                    'T' + str(num))
+                    quater_list.append(quater)
+                num += 1
+            elif '=' in rule_list[rulepos].right:
+                quater = Quater('=', quater_list[-1].result, '_', sym[2])
+                quater_list.append(quater)
+        elif SLR1[sta_top][VT.index(src[current])] == 'acc':
+            print('合法字符串\n')
+            break
+        else:
+            print('不合法字符串\n')
+            break
     return quater_list
 
 
