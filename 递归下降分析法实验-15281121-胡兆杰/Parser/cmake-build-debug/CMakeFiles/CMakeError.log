@@ -1,0 +1,20 @@
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: /Users/hhzjj/Code/C:C++/Clion/Parser/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_92ef3/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_92ef3.dir/build.make CMakeFiles/cmTC_92ef3.dir/build
+CMakeFiles/cmTC_92ef3.dir/build.make:64: *** target pattern contains no `%'.  Stop.
+make: *** [cmTC_92ef3/fast] Error 2
+
+
+
+Detecting CXX [-std=c++1z] compiler features failed to compile with the following output:
+Change Dir: /Users/hhzjj/Code/C:C++/Clion/Parser/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ee831/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ee831.dir/build.make CMakeFiles/cmTC_ee831.dir/build
+CMakeFiles/cmTC_ee831.dir/build.make:64: *** target pattern contains no `%'.  Stop.
+make: *** [cmTC_ee831/fast] Error 2
+
+
+

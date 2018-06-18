@@ -1,0 +1,164 @@
+项目集族如下
+I0
+S -> .A
+A -> .V=E
+V -> .i
+I1
+S -> A.
+I2
+A -> V.=E
+I3
+V -> i.
+I4
+A -> V=.E
+E -> .E+T
+E -> .E-T
+E -> .T
+T -> .T*F
+T -> .T/F
+T -> .F
+F -> .(E)
+F -> .i
+I5
+A -> V=E.
+E -> E.+T
+E -> E.-T
+I6
+E -> T.
+T -> T.*F
+T -> T./F
+I7
+T -> F.
+I8
+F -> (.E)
+E -> .E+T
+E -> .E-T
+E -> .T
+T -> .T*F
+T -> .T/F
+T -> .F
+F -> .(E)
+F -> .i
+I9
+F -> i.
+I10
+E -> E+.T
+T -> .T*F
+T -> .T/F
+T -> .F
+F -> .(E)
+F -> .i
+I11
+E -> E-.T
+T -> .T*F
+T -> .T/F
+T -> .F
+F -> .(E)
+F -> .i
+I12
+T -> T*.F
+F -> .(E)
+F -> .i
+I13
+T -> T/.F
+F -> .(E)
+F -> .i
+I14
+F -> (E.)
+E -> E.+T
+E -> E.-T
+I15
+E -> E+T.
+T -> T.*F
+T -> T./F
+I16
+E -> E-T.
+T -> T.*F
+T -> T./F
+I17
+T -> T*F.
+I18
+T -> T/F.
+I19
+F -> (E).
+
+识别活前缀的DFA如下
+初始状态	接收终结符	到达的状态	
+I0		A		I1		
+
+I0		V		I2		
+
+I0		i		I3		
+
+I2		=		I4		
+
+I4		E		I5		
+
+I4		T		I6		
+
+I4		F		I7		
+
+I4		(		I8		
+
+I4		i		I9		
+
+I5		+		I10		
+
+I5		-		I11		
+
+I6		*		I12		
+
+I6		/		I13		
+
+I8		E		I14		
+
+I8		T		I6		
+
+I8		F		I7		
+
+I8		(		I8		
+
+I8		i		I9		
+
+I10		T		I15		
+
+I10		F		I7		
+
+I10		(		I8		
+
+I10		i		I9		
+
+I11		T		I16		
+
+I11		F		I7		
+
+I11		(		I8		
+
+I11		i		I9		
+
+I12		F		I17		
+
+I12		(		I8		
+
+I12		i		I9		
+
+I13		F		I18		
+
+I13		(		I8		
+
+I13		i		I9		
+
+I14		)		I19		
+
+I14		+		I10		
+
+I14		-		I11		
+
+I15		*		I12		
+
+I15		/		I13		
+
+I16		*		I12		
+
+I16		/		I13		
+

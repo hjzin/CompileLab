@@ -1,0 +1,24 @@
+//程序开始
+begin
+a := 1;
+b := 2;
+c := false
+if (a<b)
+then a + 1;
+else
+    b+1;
+
+for i := 1 to n do
+{   
+    if (a >1 and b >1)
+        count := count + 1;
+    if (a < 1 or b <= 1)
+        count := 0;
+}
+
+while (not c) do
+    begin
+    break;
+    end
+END
+/*END*/
