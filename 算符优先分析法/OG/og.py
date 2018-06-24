@@ -95,7 +95,7 @@ def gen_lastvt(ch):
             if rule_list[i].right[-1] in VT:
                 if rule_list[i].right[-1] not in LastVT[VN.index(ch)]:
                     LastVT[VN.index(ch)].append(rule_list[i].right[-1])
-            # 形如U -> ...aV之类的规则，将b加入U的FirstVT集
+            # 形如U -> ...aV之类的规则，将a加入U的LastVT集
             elif len(rule_list[i].right) > 1 and rule_list[i].right[-2] in VT and rule_list[i].right[-1] in VN:
                 if rule_list[i].right[-2] not in LastVT[VN.index(ch)]:
                     LastVT[VN.index(ch)].append(rule_list[i].right[-2])
